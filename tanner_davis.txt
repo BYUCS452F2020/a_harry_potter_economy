@@ -1,0 +1,12 @@
+I have always been interested in making/maintaining a Reddit bot but haven't found the time yet, I think this will be a very fun project to get my feet wet.
+
+Business:
+From a money making standpoint I don't think there is a way to make profit off of a Reddit bot (legally), but learning how to connect/read/interact 
+with other companies API's is a very good skill to have for a future busniess.
+
+Legal:
+I have no idea what I am supposed to say here but I'm sure this project is within Reddit's ToS.
+
+Technical:
+I don't have much experience with Reddit bots but I am proficient in Python. I also have worked with a few noSQL databases before, 
+namely Google Firestore/Firebase and AWS DynamoDB
