@@ -1,0 +1,14 @@
+I am both a harry potter fan and and a reddit user so it seems my interests have colided with this project, 
+I love the idea of using the awards currently given and expanding on it. 
+
+Business:
+From the business end supposing this eventually turned into something bigger than reddit I would be able to help expand the idea
+working through the proper business strategies and working with other companies to grow the brand
+
+Legal:
+I have 0 legal experience but I'm sure I could google and legal requirements we run into
+
+Technical:
+I have some experience with reddit bots and extensive experience with python.
+I have a fair amount of experience with relational databases in general including sqlite.
+I have spent a lot of time in the AWS environment.
