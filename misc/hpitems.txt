@@ -1,0 +1,36 @@
+29 knuts per sickle
+17 sickles per galleon
+
+values
+
+knut - 1
+sickle - 29
+galleon - 493
+
+Gryffindor Robes - 2 Galleons (986)
+Hufflepuff Robes - 2 Galleons (986)
+Ravenclaw Robes - 2 Galleons (986)
+Slytherin Robes - 2 Galleons (986)
+Dress Robes - 5 Galleons (2465)
+
+Hogwarts, A History - 2 Galleons (986)
+Quidditch through the Ages - 14 Sickles (406)
+Fantastic Beasts and Where to Find Them - 1 Galleon (493)
+
+Pewter Cauldron - 2 Galleons (986)
+Solid Gold Cauldron - 40 Galleons (19720)
+
+Toad - 1 Galleon (493)
+Barn Owl - 8 Galleons (3944)
+Snowy Owl - 15 Galleons (7395)
+Black Cat - 6 Galleons (2958)
+
+Cleansweep 7 - 10 Galleons (4930)
+Nimbus 2000 - 15 Galleons (7395)
+Nimbus 2001 - 25 Galleons (12325)
+Firebolt - 50 Galleons (24650)
+
+Dragon Liver - 16 sickles (464)
+
+Bertie Bott's Every Flavor Beans - 5 Sickles (145)
+Licorice Wand - 2 Sickles (58)

@@ -1,0 +1,58 @@
+29 knuts per sickle
+17 sickles per galleon
+
+values
+
+knut - 1
+sickle - 29
+galleon - 493
+
+
+
+cost to buy a card - 13 Sickles (377)
+
+common - 5 Sickles (145)
+
+Albus Dumbledore
+Flavius Belby
+Uric the Oddball
+Adalbert Waffling
+Archibald Alderton
+Bowman Wright
+Burdock Muldoon
+Chauncey Oldridge
+Cassandra Vablatsky
+Godric Gryffindor
+Rowena Ravenclaw
+Helga Hufflepuff
+Salazar Slytherin
+
+uncommon - 13 Sickles (377)
+
+Gregory the Smarmy
+Gwenog Jones
+Herpo the Foul
+Mungo Bonham
+Bertie Bott
+Artemisia Lufkin
+Newt Scamander
+Elladora Ketteridge
+
+rare - 2 Galleons (986)
+
+Celestina Warbeck
+Circe
+Cornelius Agrippa
+Paracelsus
+Wendelin the Weird
+
+epic - 5 Galleons (2465)
+
+Urg the Unclean
+Morgan le Fay
+Ptolemy
+
+legendary - 15 Galleons (7395)
+
+Harry Potter
+Merlin
