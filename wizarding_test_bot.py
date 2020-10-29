@@ -62,6 +62,9 @@ class Item:
         self.itemname = itemname
         self.value = value
 
+def getGuideLinkText():
+    return "\n\n____________\n\n" + "I am a bot. [Click here](https://www.reddit.com/user/ww-test-bot/comments/jjzc9n/a_guide_to_using_the_wizarding_world_currency_bot/) to learn how to use me."
+
 def create_connection(db_file):
     conn = None
     try:
@@ -134,7 +137,7 @@ def sell_card(conn, cardname, username):
     records = cur.fetchone()
     cur.close()
     if records is None:
-        return "You do not own the " + cardname + " chocolate frog card."
+        return "You do not own the " + cardname + " chocolate frog card." + getGuideLinkText()
     
     sql_delete = ''' DELETE FROM CardInventory
                      WHERE CardId = (SELECT MIN(CardId) FROM CardInventory WHERE CardName = ? AND UserName = ?) '''
@@ -156,7 +159,7 @@ def sell_card(conn, cardname, username):
     sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
     knutString = " knut." if user.knuts == 1 else " knuts."
     reply = "You sold your " + cardname + " chocolate frog card!\n\n" + "Your Gringotts vault now has a balance of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
-    return reply
+    return reply + getGuideLinkText()
     
 def insert_item(conn, itemname, username):
     sql = ''' INSERT INTO ItemInventory(ItemName, UserName)
@@ -188,7 +191,7 @@ def buy_item(conn, itemname, username):
         insert_user(conn, user)
     user_value = get_value_from_coins(user.galleons, user.sickles, user.knuts)
     if user_value < item.value:
-        return "You do not have enough wizard gold to purchase this item."
+        return "You do not have enough wizard gold to purchase this item." + getGuideLinkText()
     else:
         coins = get_coins_from_value(user_value - item.value)
         user.galleons = coins[0]
@@ -202,7 +205,7 @@ def buy_item(conn, itemname, username):
         sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
         knutString = " knut." if user.knuts == 1 else " knuts."
         reply = "One " + itemname + " has been added to your Gringotts vault!\n\n" + "You now have a balance of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
-        return reply
+        return reply + getGuideLinkText()
 
 def give_item(conn, itemname, giver, receiver):
     cur = conn.cursor()
@@ -212,7 +215,7 @@ def give_item(conn, itemname, giver, receiver):
     records = cur.fetchone()
     cur.close()
     if records is None:
-        return "You do not own that item."
+        return "You do not own that item." + getGuideLinkText()
     
     user = get_user(conn, receiver)
     if user == 0:
@@ -228,7 +231,7 @@ def give_item(conn, itemname, giver, receiver):
     
     insert_item(conn, itemname, receiver)
     
-    return "You have given u/" + receiver + " one " + itemname + "! It has been removed from your Gringotts vault and added to theirs."
+    return "You have given u/" + receiver + " one " + itemname + "! It has been removed from your Gringotts vault and added to theirs." + getGuideLinkText()
 
 def get_user_items_and_cards(conn, username, reply):
     sql_get_items = ''' SELECT ItemName FROM ItemInventory
@@ -318,6 +321,7 @@ def search():
                                 sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                                 knutString = " knut." if user.knuts == 1 else " knuts."
                                 reply = "You have given u/" + name + " a Reddit Galleon.\n\nu/" + name + " has a total of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
+                                reply = reply + getGuideLinkText()
                                 results.reply(reply)
                     except:
                         break
@@ -346,6 +350,7 @@ def search():
                                     sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                                     knutString = " knut." if user.knuts == 1 else " knuts."
                                     reply = "You have given u/" + name + " a Reddit Sickle.\n\nu/" + name + " has a total of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
+                                    reply = reply + getGuideLinkText()
                                     results.reply(reply)
                         except:
                             break
@@ -374,6 +379,7 @@ def search():
                                         sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                                         knutString = " knut." if user.knuts == 1 else " knuts."
                                         reply = "You have given u/" + name + " a Reddit Knut.\n\nu/" + name + " has a total of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
+                                        reply = reply + getGuideLinkText()
                                         results.reply(reply)
                             except:
                                 break
@@ -393,14 +399,9 @@ def search():
                                         galleonString = " galleon, " if user.galleons == 1 else " galleons, "
                                         sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                                         knutString = " knut." if user.knuts == 1 else " knuts."
-                                        total_awards = 0
-                                        total_users = 0
-                                        total_awards = get_total_awards(conn)
-                                        total_users = get_total_users(conn)
                                         reply = "You have a total of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
                                         reply = get_user_items_and_cards(conn, user.username, reply)
-                                        if total_awards != 0 and total_users != 0:
-                                             reply = reply + "\n\n____________\n\n" + "I have given " + str(total_users) + " users a total of " + str(total_awards) + " awards."
+                                        reply = reply + getGuideLinkText()
                                         results.reply(reply)
                                 except:
                                     break
@@ -434,6 +435,7 @@ def search():
                                                 sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                                                 knutString = " knut." if user.knuts == 1 else " knuts."
                                                 reply = "You got the " + cardname + " chocolate frog card!\n\n" + "13 sickles have been removed from your Gringotts vault, and you now have a balance of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
+                                                reply = reply + getGuideLinkText()
                                                 results.reply(reply)
                                     except:
                                         break
