@@ -251,39 +251,11 @@ def get_user_items_and_cards(conn, username, reply):
     cur.execute(sql_get_cards, (username,))
     rows = cur.fetchall()
     if rows is not None:
-        reply = reply + "\n\n" + "## You have the following chocolate frog cards in your vault:\n"
+        reply = reply + "\n\n" + "## You have the following chocolate frog cards in your collection:\n"
         for row in rows:
             reply = reply + "\n- " + row[0]
     cur.close()
     return reply
-
-def get_total_awards(conn):
-    try:
-        c = conn.cursor()
-        sql_select_query = """select sum(Galleons+Sickles+Knuts) from User"""
-        c.execute(sql_select_query)
-        records = c.fetchone()
-        if records is None:
-            return 0
-        total_awards = records[0]
-        c.close()
-    except sqlite3.Error as error:
-        print("Failed to read data from table", error)
-    return total_awards
-    
-def get_total_users(conn):
-    try:
-        c = conn.cursor()
-        sql_select_query = """select count(*) from User"""
-        c.execute(sql_select_query)
-        records = c.fetchone()
-        if records is None:
-            return 0
-        total_users = records[0]
-        c.close()
-    except sqlite3.Error as error:
-        print("Failed to read data from table", error)
-    return total_users
     
 def search():
     reddit = praw.Reddit('ww-test-bot')
