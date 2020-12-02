@@ -4,7 +4,7 @@ from models.card import Card
 
 
 class User:
-    def __init__(self, username:str, galleons:int, sickles:int, knuts:int, inventory:list=[], cards:list=[]) -> None:
+    def __init__(self, username:str, galleons:int=0, sickles:int=0, knuts:int=0, inventory:list=[], cards:list=[]) -> None:
         self.username:str = username
         self.galleons:int = galleons
         self.sickles:int = sickles
