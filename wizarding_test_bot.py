@@ -39,6 +39,40 @@ rare_cards = ["Celestina Warbeck", "Circe", "Cornelius Agrippa", "Paracelsus", "
 epic_cards = ["Urg the Unclean", "Morgan le Fay", "Ptolemy"]
 legendary_cards = ["Harry Potter", "Merlin"]
 
+card_links = {
+    "Albus Dumbledore": "[Albus Dumbledore](https://harrypotter.fandom.com/wiki/Albus_Dumbledore_(Chocolate_Frog_Card))",
+    "Flavius Belby": "[Flavius Belby](https://harrypotter.fandom.com/wiki/Flavius_Belby)",
+    "Uric the Oddball": "[Uric the Oddball](https://harrypotter.fandom.com/wiki/Uric_the_Oddball)",
+    "Adalbert Waffling": "[Adalbert Waffling](https://harrypotter.fandom.com/wiki/Adalbert_Waffling)",
+    "Archibald Alderton": "[Archibald Alderton](https://harrypotter.fandom.com/wiki/Archibald_Alderton)",
+    "Bowman Wright": "[Bowman Wright](https://harrypotter.fandom.com/wiki/Bowman_Wright)",
+    "Burdock Muldoon": "[Burdock Muldoon](https://harrypotter.fandom.com/wiki/Burdock_Muldoon)",
+    "Chauncey Oldridge": "[Chauncey Oldridge](https://harrypotter.fandom.com/wiki/Chauncey_Oldridge)",
+    "Cassandra Vablatsky": "[Cassandra Vablatsky](https://harrypotter.fandom.com/wiki/Cassandra_Vablatsky)",
+    "Godric Gryffindor": "[Godric Gryffindor](https://harrypotter.fandom.com/wiki/Godric_Gryffindor)",
+    "Rowena Ravenclaw": "[Rowena Ravenclaw](https://harrypotter.fandom.com/wiki/Rowena_Ravenclaw)",
+    "Helga Hufflepuff": "[Helga Hufflepuff](https://harrypotter.fandom.com/wiki/Helga_Hufflepuff)",
+    "Salazar Slytherin": "[Salazar Slytherin](https://harrypotter.fandom.com/wiki/Salazar_Slytherin)",
+    "Gregory the Smarmy": "[Gregory the Smarmy](https://harrypotter.fandom.com/wiki/Gregory_the_Smarmy)",
+    "Gwenog Jones": "[Gwenog Jones](https://harrypotter.fandom.com/wiki/Gwenog_Jones)",
+    "Herpo the Foul": "[Herpo the Foul](https://harrypotter.fandom.com/wiki/Herpo_the_Foul)",
+    "Mungo Bonham": "[Mungo Bonham](https://harrypotter.fandom.com/wiki/Mungo_Bunham)",
+    "Bertie Bott": "[Bertie Bott](https://harrypotter.fandom.com/wiki/Bertie_Bott)",
+    "Artemisia Lufkin": "[Artemisia Lufkin](https://harrypotter.fandom.com/wiki/Artemisia_Lufkin)",
+    "Newt Scamander": "[Newt Scamander](https://harrypotter.fandom.com/wiki/Newton_Scamander)",
+    "Elladora Ketteridge": "[Elladora Ketteridge](https://harrypotter.fandom.com/wiki/Elladora_Ketteridge)",
+    "Celestina Warbeck": "[Celestina Warbeck](https://harrypotter.fandom.com/wiki/Celestina_Warbeck)",
+    "Circe": "[Circe](https://harrypotter.fandom.com/wiki/Circe)",
+    "Cornelius Agrippa": "[Cornelius Agrippa](https://harrypotter.fandom.com/wiki/Cornelius_Agrippa)",
+    "Paracelsus": "[Paracelsus](https://harrypotter.fandom.com/wiki/Phillipus_von_Hohenheim)",
+    "Wendelin the Weird": "[Wendelin the Weird](https://harrypotter.fandom.com/wiki/Wendelin_the_Weird)",
+    "Urg the Unclean": "[Urg the Unclean](https://harrypotter.fandom.com/wiki/Urg_the_Unclean)",
+    "Morgan le Fay": "[Morgan le Fay](https://harrypotter.fandom.com/wiki/Morgan_le_Fay)",
+    "Ptolemy": "[Ptolemy](https://harrypotter.fandom.com/wiki/Ptolemy)",
+    "Harry Potter": "[Harry Potter](https://harrypotter.fandom.com/wiki/Harry_Potter)",
+    "Merlin": "[Merlin](https://harrypotter.fandom.com/wiki/Merlin)"
+}
+
 def get_random_card():
     rarity = random.randint(1, 100)
     if rarity < 43:
@@ -253,7 +287,7 @@ def get_user_items_and_cards(conn, username, reply):
     if rows is not None:
         reply = reply + "\n\n" + "## You have the following chocolate frog cards in your collection:\n"
         for row in rows:
-            reply = reply + "\n- " + row[0]
+            reply = reply + "\n- " + card_links.get(row[0])
     cur.close()
     return reply
     
@@ -406,7 +440,7 @@ def search():
                                                 galleonString = " galleon, " if user.galleons == 1 else " galleons, "
                                                 sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                                                 knutString = " knut." if user.knuts == 1 else " knuts."
-                                                reply = "You got the " + cardname + " chocolate frog card!\n\n" + "13 sickles have been removed from your Gringotts vault, and you now have a balance of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
+                                                reply = "You got the " + card_links.get(cardname) + " chocolate frog card!\n\n" + "13 sickles have been removed from your Gringotts vault, and you now have a balance of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
                                                 reply = reply + getGuideLinkText()
                                                 results.reply(reply)
                                     except:
