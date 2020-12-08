@@ -106,7 +106,7 @@ class FirestoreDatabase(IDatabase):
             new_value = user.total_currency_value - item.value
             user.set_coins(*User.get_coins_from_value(new_value))
             user_doc_ref.update({
-                u'iventory': firestore_api.ArrayUnion([item_doc_ref.path]),
+                u'inventory': firestore_api.ArrayUnion([item_doc_ref.path]),
                 u'galleons': user.galleons,
                 u'sickles': user.sickles,
                 u'knuts': user.knuts
