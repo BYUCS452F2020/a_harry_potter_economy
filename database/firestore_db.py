@@ -1,6 +1,5 @@
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+from firebase_admin import credentials, firestore
 from database.database import IDatabase
 from models.user import User
 from models.card import Card
@@ -25,7 +24,7 @@ class FirestoreDatabase(IDatabase):
     
     def update_user(self, user:User):
         user_doc_ref = self.firestore_db.collection(self.user_coll_name).document(user.username)
-        user_doc_ref.add(user.to_dict())
+        user_doc_ref.update(user.to_dict())
     
     def get_user(self, user_name:str):
         snapshot = self.firestore_db.collection(self.user_coll_name).document(user_name).get()
