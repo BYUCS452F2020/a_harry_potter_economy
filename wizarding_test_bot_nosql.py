@@ -99,25 +99,18 @@ def search(reddit, db):
                         results.save()
                         name = results.parent().author.name
                         if results.author.name != name:
-                            print("getting user")
                             user = db.get_user(name)
-                            print("user got")
                             if user == 0:
                                 user = User(name, 0, 0, 0)
-                                print("adding user")
                                 db.add_user(user)
-                                print("user added")
                             galleons = user.galleons + 1
                             user.galleons = galleons
-                            print("updating user")
                             db.update_user(user)
-                            print("user updated")
                             galleonString = " galleon, " if user.galleons == 1 else " galleons, "
                             sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
                             knutString = " knut." if user.knuts == 1 else " knuts."
                             reply = "You have given u/" + name + " a Reddit Galleon.\n\nu/" + name + " has a total of " + str(user.galleons) + galleonString + str(user.sickles) + sickleString + str(user.knuts) + knutString
                             reply = reply + getGuideLinkText()
-                            print("replying")
                             results.reply(reply)
                     except:
                         break
