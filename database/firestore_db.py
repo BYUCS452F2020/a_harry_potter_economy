@@ -104,7 +104,7 @@ class FirestoreDatabase(IDatabase):
         user = User.from_dict(user_doc_ref.get().to_dict())
         item_doc_ref = self.firestore_db.collection(self.item_coll_name).document(item_name)
         item = Item.from_dict(item_doc_ref.get().to_dict())
-        if user.total_currency_value > item.value:
+        if user.total_currency_value >= item.value:
             new_value = user.total_currency_value - item.value
             user.set_coins(*User.get_coins_from_value(new_value))
             user_doc_ref.update({
