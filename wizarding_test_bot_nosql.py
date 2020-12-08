@@ -3,15 +3,11 @@
 #from /tmp/dumbledore-reddit-app/lib/python3.7/site-packages/praw import praw
 import praw
 #praw.path.insert(0, 'tmp/dumbledore-reddit-app/lib/python3.7/site-packages/')
-import pdb
-import re
 import os
-import sys
-import time
 import random
-import sqlite3
 from sqlite3 import Error
 from database.firestore_db import FirestoreDatabase
+from models.user import User
 
 
 common_cards = ["Albus Dumbledore", "Flavius Belby", "Uric the Oddball", "Adalbert Waffling", "Archibald Alderton", "Bowman Wright", "Burdock Muldoon", "Chauncey Oldridge", "Cassandra Vablatsky", "Godric Gryffindor", "Rowena Ravenclaw", "Helga Hufflepuff", "Salazar Slytherin"]
