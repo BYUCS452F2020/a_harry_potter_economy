@@ -63,7 +63,7 @@ class FirestoreDatabase(IDatabase):
     def sell_card(self, card_name:str, user_name:str):
         user_doc_ref = self.firestore_db.collection(self.user_coll_name).document(user_name)
         user = User.from_dict(user_doc_ref.get().to_dict())
-        user_owned_cards = [ref.path.split("/")[-1] for ref in user.cards]
+        user_owned_cards = [ref.split("/")[-1] for ref in user.cards]
         card_doc_ref = self.firestore_db.collection(self.card_coll_name).document(card_name)
         card = Card.from_dict(card_doc_ref.get().to_dict())
         
@@ -89,7 +89,7 @@ class FirestoreDatabase(IDatabase):
     def give_item_to_user(self, item_name:str, giver:str, receiver:str) -> bool:
         giver_doc_ref = self.firestore_db.collection(self.user_coll_name).document(giver)
         giver_user = User.from_dict(giver_doc_ref.get().to_dict())
-        giver_owned_items = [ref.path.split("/")[-1] for ref in giver_user.inventory]
+        giver_owned_items = [ref.split("/")[-1] for ref in giver_user.inventory]
         item_doc_ref = self.firestore_db.collection(self.item_coll_name).document(item_name)
         
         if item_name in giver_owned_items:

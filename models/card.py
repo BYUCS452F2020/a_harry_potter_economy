@@ -11,7 +11,7 @@ class Card:
 
     @staticmethod
     def from_dict(source):
-        return Card(source[u"cardName"], CardRarity[source[u"rarity"]], source[u"value"])
+        return Card(source[u"cardName"], source[u"rarity"], source[u"value"])
 
     def to_dict(self) -> Dict[str, Any]:
         return {
