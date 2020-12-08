@@ -122,7 +122,7 @@ def search(reddit, db):
                             results.save()
                             name = results.parent().author.name
                             if results.author.name != name:
-                                db.get_user(name)
+                                user = db.get_user(name)
                                 if user == 0:
                                     user = User(name, 0, 0, 0)
                                     db.add_user(user)
@@ -175,7 +175,7 @@ def search(reddit, db):
                                     posts_replied_to.append(results.id)
                                     results.save()
                                     name = results.author.name
-                                    user = dbget_user(name)
+                                    user = db.get_user(name)
                                     if user == 0:
                                         user = User(name, 0, 0, 0)
                                         db.add_user(user)
