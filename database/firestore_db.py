@@ -28,6 +28,8 @@ class FirestoreDatabase(IDatabase):
     
     def get_user(self, user_name:str):
         snapshot = self.firestore_db.collection(self.user_coll_name).document(user_name).get()
+        if snapshot.to_dict() is None:
+            return 0
         return User.from_dict(snapshot.to_dict())
 
     def delete_user(self, user_name:str):
