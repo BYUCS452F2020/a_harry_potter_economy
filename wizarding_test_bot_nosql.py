@@ -206,15 +206,9 @@ def search(reddit, db):
                                         user_value = get_value_from_coins(user.galleons, user.sickles, user.knuts)
                                         if user_value < 377:
                                             results.reply("You do not have enough wizard gold to purchase a chocolate frog. You need 13 Sickles.")
-                                        else:
-                                            # coins = get_coins_from_value(user_value - 377)
-                                            # user.galleons = coins[0]
-                                            # user.sickles = coins[1]
-                                            # user.knuts = coins[2]
-                                            # db.update_user(user)
-                                            
+                                        else:                                            
                                             cardname = get_random_card()
-                                            db.add_card_to_user(cardname, user.username)
+                                            user = db.add_card_to_user(cardname, user.username)
                                             
                                             galleonString = " galleon, " if user.galleons == 1 else " galleons, "
                                             sickleString = " sickle, and " if user.sickles == 1 else " sickles, and "
@@ -226,362 +220,424 @@ def search(reddit, db):
                                         break
                                 else:
                                     found=body.find('!sellgwenog')
+                                    card_name = "Gwenog Jones"
+                                    reply = f"Sold {card_name}"
                                     if found != -1:
                                         try:
                                             posts_replied_to.append(results.id)
                                             results.save()
-                                            reply = db.sell_card("Gwenog Jones", results.author.name)
+                                            user = db.sell_card(card_name, results.author.name)
                                             results.reply(reply)
                                         except:
                                             break
                                     else:
                                         found=body.find('!sellcassandra')
+                                        card_name = "Cassandra Vablatsky"
+                                        reply = f"Sold {card_name}"
                                         if found != -1:
                                             try:
                                                 posts_replied_to.append(results.id)
                                                 results.save()
-                                                reply = db.sell_card("Cassandra Vablatsky", results.author.name)
+                                                user = db.sell_card(card_name, results.author.name)
                                                 results.reply(reply)
                                             except:
                                                 break
                                         else:
                                             found=body.find('!sellalbus')
+                                            card_name = "Albus Dumbledore"
+                                            reply = f"Sold {card_name}"
                                             if found != -1:
                                                 try:
                                                     posts_replied_to.append(results.id)
                                                     results.save()
-                                                    reply = db.sell_card("Albus Dumbledore", results.author.name)
+                                                    user = db.sell_card(card_name, results.author.name)
                                                     results.reply(reply)
                                                 except:
                                                     break
                                             else:
                                                 found=body.find('!sellflavius')
+                                                card_name = "Flavius Belby"
+                                                reply = f"Sold {card_name}"
                                                 if found != -1:
                                                     try:
                                                         posts_replied_to.append(results.id)
                                                         results.save()
-                                                        reply = db.sell_card("Flavius Belby", results.author.name)
+                                                        user = db.sell_card(card_name, results.author.name)
                                                         results.reply(reply)
                                                     except:
                                                         break
                                                 else:
                                                     found=body.find('!selluric')
+                                                    card_name = "Uric the Oddball"
+                                                    reply = f"Sold {card_name}"
                                                     if found != -1:
                                                         try:
                                                             posts_replied_to.append(results.id)
                                                             results.save()
-                                                            reply = db.sell_card("Uric the Oddball", results.author.name)
+                                                            user = db.sell_card(card_name, results.author.name)
                                                             results.reply(reply)
                                                         except:
                                                             break
                                                     else:
                                                         found=body.find('!selladalbert')
+                                                        card_name = "Adalbert Waffling"
+                                                        reply = f"Sold {card_name}"
                                                         if found != -1:
                                                             try:
                                                                 posts_replied_to.append(results.id)
                                                                 results.save()
                                                                 
-                                                                reply =db.sell_card("Adalbert Waffling", results.author.name)
+                                                                user =db.sell_card(card_name, results.author.name)
                                                                 results.reply(reply)
                                                             except:
                                                                 break
                                                         else:
                                                             found=body.find('!sellarchibald')
+                                                            card_name = "Archibald Alderton"
+                                                            reply = f"Sold {card_name}"
                                                             if found != -1:
                                                                 try:
                                                                     posts_replied_to.append(results.id)
                                                                     results.save()
                                                                     
                                                                     
-                                                                    reply =db.sell_card("Archibald Alderton", results.author.name)
+                                                                    user =db.sell_card(card_name, results.author.name)
                                                                     results.reply(reply)
                                                                 except:
                                                                     break
                                                             else:
                                                                 found=body.find('!sellbowman')
+                                                                card_name = "Bowman Wright"
+                                                                reply = f"Sold {card_name}"
                                                                 if found != -1:
                                                                     try:
                                                                         posts_replied_to.append(results.id)
                                                                         results.save()
                                                                         
                                                                         
-                                                                        reply =db.sell_card("Bowman Wright", results.author.name)
+                                                                        user =db.sell_card(card_name, results.author.name)
                                                                         results.reply(reply)
                                                                     except:
                                                                         break
                                                                 else:
                                                                     found=body.find('!sellchauncey')
+                                                                    card_name = "Chauncey"
+                                                                    reply = f"Sold {card_name}"
                                                                     if found != -1:
                                                                         try:
                                                                             posts_replied_to.append(results.id)
                                                                             results.save()
                                                                             
                                                                             
-                                                                            reply =db.sell_card("Chauncey", results.author.name)
+                                                                            user =db.sell_card(card_name, results.author.name)
                                                                             results.reply(reply)
                                                                         except:
                                                                             break
                                                                     else:
                                                                         found=body.find('!sellburdock')
+                                                                        card_name = "Burdock Muldoon"
+                                                                        reply = f"Sold {card_name}"
                                                                         if found != -1:
                                                                             try:
                                                                                 posts_replied_to.append(results.id)
                                                                                 results.save()
                                                                                 
                                                                                 
-                                                                                reply =db.sell_card("Burdock Muldoon", results.author.name)
+                                                                                user =db.sell_card(card_name, results.author.name)
                                                                                 results.reply(reply)
                                                                             except:
                                                                                 break
                                                                         else:
                                                                             found=body.find('!sellgodric')
+                                                                            card_name = "Godric Gryffindor"
+                                                                            reply = f"Sold {card_name}"
                                                                             if found != -1:
                                                                                 try:
                                                                                     posts_replied_to.append(results.id)
                                                                                     results.save()
                                                                                     
                                                                                     
-                                                                                    reply =db.sell_card("Godric Gryffindor", results.author.name)
+                                                                                    user =db.sell_card(card_name, results.author.name)
                                                                                     results.reply(reply)
                                                                                 except:
                                                                                     break
                                                                             else:
                                                                                 found=body.find('!sellrowena')
+                                                                                card_name = "Rowena Ravenclaw"
+                                                                                reply = f"Sold {card_name}"
                                                                                 if found != -1:
                                                                                     try:
                                                                                         posts_replied_to.append(results.id)
                                                                                         results.save()
                                                                                         
                                                                                         
-                                                                                        reply =db.sell_card("Rowena Ravenclaw", results.author.name)
+                                                                                        user =db.sell_card(card_name, results.author.name)
                                                                                         results.reply(reply)
                                                                                     except:
                                                                                         break
                                                                                 else:
                                                                                     found=body.find('!sellhelga')
+                                                                                    card_name = "Helga Hufflepuff"
+                                                                                    reply = f"Sold {card_name}"
                                                                                     if found != -1:
                                                                                         try:
                                                                                             posts_replied_to.append(results.id)
                                                                                             results.save()
                                                                                             
                                                                                             
-                                                                                            reply =db.sell_card("Helga Hufflepuff", results.author.name)
+                                                                                            user =db.sell_card(card_name, results.author.name)
                                                                                             results.reply(reply)
                                                                                         except:
                                                                                             break
                                                                                     else:
                                                                                         found=body.find('!sellsalazar')
+                                                                                        card_name = "Salazar Slytherin"
+                                                                                        reply = f"Sold {card_name}"
                                                                                         if found != -1:
                                                                                             try:
                                                                                                 posts_replied_to.append(results.id)
                                                                                                 results.save()
                                                                                                 
                                                                                                 
-                                                                                                reply =db.sell_card("Salazar Slytherin", results.author.name)
+                                                                                                user =db.sell_card(card_name, results.author.name)
                                                                                                 results.reply(reply)
                                                                                             except:
                                                                                                 break
                                                                                         else:
                                                                                             found=body.find('!sellgregory')
+                                                                                            card_name = "Gregory the Smarmy"
+                                                                                            reply = f"Sold {card_name}"
                                                                                             if found != -1:
                                                                                                 try:
                                                                                                     posts_replied_to.append(results.id)
                                                                                                     results.save()
                                                                                                     
                                                                                                     
-                                                                                                    reply =db.sell_card("Gregory the Smarmy", results.author.name)
+                                                                                                    user =db.sell_card(card_name, results.author.name)
                                                                                                     results.reply(reply)
                                                                                                 except:
                                                                                                     break
                                                                                             else:
                                                                                                 found=body.find('!sellherpo')
+                                                                                                card_name = "Herpo the Foul"
+                                                                                                reply = f"Sold {card_name}"
                                                                                                 if found != -1:
                                                                                                     try:
                                                                                                         posts_replied_to.append(results.id)
                                                                                                         results.save()
                                                                                                         
                                                                                                         
-                                                                                                        reply =db.sell_card("Herpo the Foul", results.author.name)
+                                                                                                        user =db.sell_card(card_name, results.author.name)
                                                                                                         results.reply(reply)
                                                                                                     except:
                                                                                                         break
                                                                                                 else:
                                                                                                     found=body.find('!sellmungo')
+                                                                                                    card_name = "Mungo Bonham"
+                                                                                                    reply = f"Sold {card_name}"
                                                                                                     if found != -1:
                                                                                                         try:
                                                                                                             posts_replied_to.append(results.id)
                                                                                                             results.save()
                                                                                                             
                                                                                                             
-                                                                                                            reply =db.sell_card("Mungo Bonham", results.author.name)
+                                                                                                            user =db.sell_card(card_name, results.author.name)
                                                                                                             results.reply(reply)
                                                                                                         except:
                                                                                                             break
                                                                                                     else:
                                                                                                         found=body.find('!sellbertie')
+                                                                                                        card_name = "Bertie Bott"
+                                                                                                        reply = f"Sold {card_name}"
                                                                                                         if found != -1:
                                                                                                             try:
                                                                                                                 posts_replied_to.append(results.id)
                                                                                                                 results.save()
                                                                                                                 
                                                                                                                 
-                                                                                                                reply =db.sell_card("Bertie Bott", results.author.name)
+                                                                                                                user =db.sell_card(card_name, results.author.name)
                                                                                                                 results.reply(reply)
                                                                                                             except:
                                                                                                                 break
                                                                                                         else:
                                                                                                             found=body.find('!sellartemisia')
+                                                                                                            card_name = "Artemisia Lufkin"
+                                                                                                            reply = f"Sold {card_name}"
                                                                                                             if found != -1:
                                                                                                                 try:
                                                                                                                     posts_replied_to.append(results.id)
                                                                                                                     results.save()
                                                                                                                     
                                                                                                                     
-                                                                                                                    reply =db.sell_card("Artemisia Lufkin", results.author.name)
+                                                                                                                    user =db.sell_card(card_name, results.author.name)
                                                                                                                     results.reply(reply)
                                                                                                                 except:
                                                                                                                     break
                                                                                                             else:
                                                                                                                 found=body.find('!sellnewt')
+                                                                                                                card_name = "Newt Scamander"
+                                                                                                                reply = f"Sold {card_name}"
                                                                                                                 if found != -1:
                                                                                                                     try:
                                                                                                                         posts_replied_to.append(results.id)
                                                                                                                         results.save()
                                                                                                                         
                                                                                                                         
-                                                                                                                        reply =db.sell_card("Newt Scamander", results.author.name)
+                                                                                                                        user =db.sell_card(card_name, results.author.name)
                                                                                                                         results.reply(reply)
                                                                                                                     except:
                                                                                                                         break
                                                                                                                 else:
                                                                                                                     found=body.find('!sellelladora')
+                                                                                                                    card_name = "Elladora Ketteridge"
+                                                                                                                    reply = f"Sold {card_name}"
                                                                                                                     if found != -1:
                                                                                                                         try:
                                                                                                                             posts_replied_to.append(results.id)
                                                                                                                             results.save()
                                                                                                                             
                                                                                                                         
-                                                                                                                            reply =db.sell_card("Elladora Ketteridge", results.author.name)
+                                                                                                                            user =db.sell_card(card_name, results.author.name)
                                                                                                                             results.reply(reply)
                                                                                                                         except:
                                                                                                                             break
                                                                                                                     else:
                                                                                                                         found=body.find('!sellcelestina')
+                                                                                                                        card_name = "Celestina Warbeck"
+                                                                                                                        reply = f"Sold {card_name}"
                                                                                                                         if found != -1:
                                                                                                                             try:
                                                                                                                                 posts_replied_to.append(results.id)
                                                                                                                                 results.save()
                                                                                                                                 
                                                                                                                                 
-                                                                                                                                reply =db.sell_card("Celestina Warbeck", results.author.name)
+                                                                                                                                user =db.sell_card(card_name, results.author.name)
                                                                                                                                 results.reply(reply)
                                                                                                                             except:
                                                                                                                                 break
                                                                                                                         else:
                                                                                                                             found=body.find('!sellcirce')
+                                                                                                                            card_name = "Circe"
+                                                                                                                            reply = f"Sold {card_name}"
                                                                                                                             if found != -1:
                                                                                                                                 try:
                                                                                                                                     posts_replied_to.append(results.id)
                                                                                                                                     results.save()
                                                                                                                                     
                                                                                                                                     
-                                                                                                                                    reply =db.sell_card("Circe", results.author.name)
+                                                                                                                                    user =db.sell_card(card_name, results.author.name)
                                                                                                                                     results.reply(reply)
                                                                                                                                 except:
                                                                                                                                     break
                                                                                                                             else:
                                                                                                                                 found=body.find('!sellcornelius')
+                                                                                                                                card_name = "Cornelius Agrippa"
+                                                                                                                                reply = f"Sold {card_name}"
                                                                                                                                 if found != -1:
                                                                                                                                     try:
                                                                                                                                         posts_replied_to.append(results.id)
                                                                                                                                         results.save()
                                                                                                                                         
                                                                                                                                         
-                                                                                                                                        reply =db.sell_card("Cornelius Agrippa", results.author.name)
+                                                                                                                                        user =db.sell_card(card_name, results.author.name)
                                                                                                                                         results.reply(reply)
                                                                                                                                     except:
                                                                                                                                         break
                                                                                                                                 else:
                                                                                                                                     found=body.find('!sellparacelsus')
+                                                                                                                                    card_name = "Paracelsus"
+                                                                                                                                    reply = f"Sold {card_name}"
                                                                                                                                     if found != -1:
                                                                                                                                         try:
                                                                                                                                             posts_replied_to.append(results.id)
                                                                                                                                             results.save()
                                                                                                                                             
                                                                                                                                             
-                                                                                                                                            reply =db.sell_card("Paracelsus", results.author.name)
+                                                                                                                                            user =db.sell_card(card_name, results.author.name)
                                                                                                                                             results.reply(reply)
                                                                                                                                         except:
                                                                                                                                             break
                                                                                                                                     else:
                                                                                                                                         found=body.find('!sellwendelin')
+                                                                                                                                        card_name = "Wendelin the Weird"
+                                                                                                                                        reply = f"Sold {card_name}"
                                                                                                                                         if found != -1:
                                                                                                                                             try:
                                                                                                                                                 posts_replied_to.append(results.id)
                                                                                                                                                 results.save()
                                                                                                                                                 
                                                                                                                                                 
-                                                                                                                                                reply =db.sell_card("Wendelin the Weird", results.author.name)
+                                                                                                                                                user =db.sell_card(card_name, results.author.name)
                                                                                                                                                 results.reply(reply)
                                                                                                                                             except:
                                                                                                                                                 break
                                                                                                                                         else:
                                                                                                                                             found=body.find('!sellurg')
+                                                                                                                                            card_name = "Urg the Unclean"
+                                                                                                                                            reply = f"Sold {card_name}"
                                                                                                                                             if found != -1:
                                                                                                                                                 try:
                                                                                                                                                     posts_replied_to.append(results.id)
                                                                                                                                                     results.save()
                                                                                                                                                     
                                                                                                                                                     
-                                                                                                                                                    reply =db.sell_card("Urg the Unclean", results.author.name)
+                                                                                                                                                    user =db.sell_card(card_name, results.author.name)
                                                                                                                                                     results.reply(reply)
                                                                                                                                                 except:
                                                                                                                                                     break
                                                                                                                                             else:
                                                                                                                                                 found=body.find('!sellmorgan')
+                                                                                                                                                card_name = "Morgan le Fay"
+                                                                                                                                                reply = f"Sold {card_name}"
                                                                                                                                                 if found != -1:
                                                                                                                                                     try:
                                                                                                                                                         posts_replied_to.append(results.id)
                                                                                                                                                         results.save()
                                                                                                                                                         
                                                                                                                                                         
-                                                                                                                                                        reply =db.sell_card("Morgan le Fay", results.author.name)
+                                                                                                                                                        user =db.sell_card(card_name, results.author.name)
                                                                                                                                                         results.reply(reply)
                                                                                                                                                     except:
                                                                                                                                                         break
                                                                                                                                                 else:
                                                                                                                                                     found=body.find('!sellptolemy')
+                                                                                                                                                    card_name = "Ptolemy"
+                                                                                                                                                    reply = f"Sold {card_name}"
                                                                                                                                                     if found != -1:
                                                                                                                                                         try:
                                                                                                                                                             posts_replied_to.append(results.id)
                                                                                                                                                             results.save()
                                                                                                                                                             
                                                                                                                                                             
-                                                                                                                                                            reply =db.sell_card("Ptolemy", results.author.name)
+                                                                                                                                                            user =db.sell_card(card_name, results.author.name)
                                                                                                                                                             results.reply(reply)
                                                                                                                                                         except:
                                                                                                                                                             break
                                                                                                                                                     else:
                                                                                                                                                         found=body.find('!sellharry')
+                                                                                                                                                        card_name = "Harry Potter"
+                                                                                                                                                        reply = f"Sold {card_name}"
                                                                                                                                                         if found != -1:
                                                                                                                                                             try:
                                                                                                                                                                 posts_replied_to.append(results.id)
                                                                                                                                                                 results.save()
                                                                                                                                                                 
                                                                                                                                                                 
-                                                                                                                                                                reply =db.sell_card("Harry Potter", results.author.name)
+                                                                                                                                                                user =db.sell_card(card_name, results.author.name)
                                                                                                                                                                 results.reply(reply)
                                                                                                                                                             except:
                                                                                                                                                                 break
                                                                                                                                                         else:
                                                                                                                                                             found=body.find('!sellmerlin')
+                                                                                                                                                            card_name = "Merlin"
+                                                                                                                                                            reply = f"Sold {card_name}"
                                                                                                                                                             if found != -1:
                                                                                                                                                                 try:
                                                                                                                                                                     posts_replied_to.append(results.id)
                                                                                                                                                                     results.save()
                                                                                                                                                                     
                                                                                                                                                                     
-                                                                                                                                                                    reply =db.sell_card("Merlin", results.author.name)
+                                                                                                                                                                    user =db.sell_card(card_name, results.author.name)
                                                                                                                                                                     results.reply(reply)
                                                                                                                                                                 except:
                                                                                                                                                                     break
@@ -1082,8 +1138,7 @@ def search(reddit, db):
                                                                                                                                                                                                                                                                                                                                     if found != -1:
                                                                                                                                                                                                                                                                                                                                         try:
                                                                                                                                                                                                                                                                                                                                             posts_replied_to.append(results.id)
-                                                                                                                                                                                                                                                                                                                                            results.save()
-                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            results.save()                                                                                                                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                                                             
                                                                                                                                                                                                                                                                                                                                             reply = db.give_item_to_user("Licorice Wand", results.author.name, results.parent().author.name)
                                                                                                                                                                                                                                                                                                                                             results.reply(reply)
