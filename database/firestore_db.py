@@ -39,7 +39,7 @@ class FirestoreDatabase(IDatabase):
         card_cost = 377 # 13 sickles
         user_doc_ref = self.firestore_db.collection(self.user_coll_name).document(user_name)
         user = User.from_dict(user_doc_ref.get().to_dict())
-        if user.total_currency_value > card_cost:
+        if user.total_currency_value >= card_cost:
             new_value = user.total_currency_value - card_cost
             user.set_coins(*User.get_coins_from_value(new_value))
             card_doc_ref = self.firestore_db.collection(self.card_coll_name).document(card_name)
@@ -49,6 +49,7 @@ class FirestoreDatabase(IDatabase):
                 u'sickles': user.sickles,
                 u'knuts': user.knuts
             })
+            return user # Return the new values
         else:
             raise InsufficientFundsException("You do not have enough wizard gold to purchase a chocolate frog", user=user)
             
@@ -73,6 +74,7 @@ class FirestoreDatabase(IDatabase):
                 u'sickles': user.sickles,
                 u'knuts': user.knuts
             })
+            return user # Return the new values
         else: 
             raise UnownedItemException("You cannot sell that card because you do not own it.", user=user)
  
@@ -110,6 +112,7 @@ class FirestoreDatabase(IDatabase):
                 u'galleons': user.galleons,
                 u'sickles': user.sickles,
                 u'knuts': user.knuts
-            }) 
+            })
+            return user # Return the new values
         else:
             raise InsufficientFundsException(f"You do not have enough wizard gold to purchase {item_name}")
